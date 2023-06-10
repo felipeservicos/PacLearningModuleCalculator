@@ -1,4 +1,4 @@
-package br.pucrio.tecmf.PACLearningModuleCalculator;
+package br.pucrio.tecmf.PACLearningModuleCalculator.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
