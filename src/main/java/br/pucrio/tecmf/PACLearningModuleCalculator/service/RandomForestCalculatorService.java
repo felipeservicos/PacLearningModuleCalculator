@@ -1,6 +1,11 @@
 package br.pucrio.tecmf.PACLearningModuleCalculator.service;
 
-public class NeuralNetworkCalculator implements IPACCalculator{
+import org.springframework.stereotype.Service;
+
+@Service
+public class RandomForestCalculatorService implements IPACLearningCalculator {
+
+
     /**
      * @param accuracy 
      * @param reliability
@@ -32,4 +37,6 @@ public class NeuralNetworkCalculator implements IPACCalculator{
     public Integer[][] lowerBoundsSamplesBetweenAccuracyAndReliability(Integer[] accuracy, Integer[] reliability, Integer VCDim, Integer range) {
         return new Integer[0][];
     }
+
+
 }
