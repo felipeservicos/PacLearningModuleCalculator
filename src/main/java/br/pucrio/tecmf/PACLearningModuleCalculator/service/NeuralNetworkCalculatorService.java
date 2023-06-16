@@ -6,6 +6,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class NeuralNetworkCalculatorService implements IPACLearningCalculator {
 
+    private Integer neurons;
+    private Integer layers;
+
+    public NeuralNetworkCalculatorService(Integer neurons, Integer layers) {
+        this.neurons = neurons;
+        this.layers = layers;
+    }
 
     /**
      * @param accuracy 
@@ -24,7 +31,7 @@ public class NeuralNetworkCalculatorService implements IPACLearningCalculator {
      */
     @Override
     public Integer estimateVCDim(Integer features) {
-        return null;
+        return (features*neurons*layers)+2;
     }
 
     /**
