@@ -24,7 +24,7 @@ public class LinearRegressionCalculatorService implements IPACLearningCalculator
      */
     @Override
     public Integer estimateVCDim(Integer features) {
-        return null;
+        return features+2;
     }
 
     /**
