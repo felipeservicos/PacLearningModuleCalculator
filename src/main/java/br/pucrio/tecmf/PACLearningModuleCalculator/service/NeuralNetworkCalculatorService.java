@@ -1,42 +1,43 @@
 package br.pucrio.tecmf.PACLearningModuleCalculator.service;
 
 
+import br.pucrio.tecmf.PACLearningModuleCalculator.model.CalculatorModelBuilder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class NeuralNetworkCalculatorService implements IPACLearningCalculator {
 
+    private Integer features;
     private Integer neurons;
     private Integer layers;
 
-    public NeuralNetworkCalculatorService(Integer neurons, Integer layers) {
+    public NeuralNetworkCalculatorService(Integer features, Integer neurons, Integer layers) {
+        this.features = features;
         this.neurons = neurons;
         this.layers = layers;
     }
 
-    /**
-     * @param accuracy 
-     * @param reliability
-     * @param VCDim
-     * @return
-     */
+
     @Override
-    public Integer calculateMinimalSample(Integer accuracy, Integer reliability, Integer VCDim) {
+    public Integer calculateMinimalSample(Integer accuracy, Integer reliability) {
         return null;
     }
 
-    /**
-     * @param features 
-     * @return
-     */
     @Override
     public Integer estimateVCDim() {
-//        return (features*neurons*layers)+2;
-        return 0;
+
+        CalculatorModelBuilder calculator = new CalculatorModelBuilder()
+                .features(this.features)
+                .neurons(this.neurons)
+                .layers(this.layers)
+                .build();
+
+
+        return calculator.getVCDimForNeuralNetwork();
     }
 
     /**
-     * @param accuracy 
+     * @param accuracy
      * @param reliability
      * @param VCDim
      * @param range
