@@ -1,30 +1,37 @@
 package br.pucrio.tecmf.PACLearningModuleCalculator.service;
 
 
+import br.pucrio.tecmf.PACLearningModuleCalculator.model.CalculatorModelBuilder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class SVMCalculatorService implements IPACLearningCalculator {
 
 
-    /**
-     * @param accuracy 
-     * @param reliability
-     * @param VCDim
-     * @return
-     */
-    @Override
-    public Integer calculateMinimalSample(Integer accuracy, Integer reliability, Integer VCDim) {
-        return null;
+    private Integer features;
+
+    public SVMCalculatorService(Integer features) {
+        this.features=features;
     }
 
     /**
-     * @param features 
+     * @param accuracy
+     * @param reliability
      * @return
      */
     @Override
-    public Integer estimateVCDim() {
+    public Integer calculateMinimalSample(Integer accuracy, Integer reliability) {
         return null;
+    }
+
+    @Override
+    public Integer estimateVCDim() {
+
+        CalculatorModelBuilder calculator = new CalculatorModelBuilder()
+                .features(this.features)
+                .build();
+
+        return calculator.getVCDimForSVM();
     }
 
     /**
