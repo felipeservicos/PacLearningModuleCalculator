@@ -23,7 +23,7 @@ public class SVMCalculatorService implements IPACLearningCalculator {
      * @return
      */
     @Override
-    public Integer estimateVCDim(Integer features) {
+    public Integer estimateVCDim() {
         return null;
     }
 
