@@ -77,4 +77,15 @@ public class CalculatorModelBuilder {
     }
 
 
+    public Integer getFeatures() {
+        return features;
+    }
+
+    public Integer getNeurons() {
+        return neurons;
+    }
+
+    public Integer getLayers() {
+        return layers;
+    }
 }
