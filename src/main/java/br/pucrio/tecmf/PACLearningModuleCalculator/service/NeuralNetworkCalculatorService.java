@@ -30,8 +30,9 @@ public class NeuralNetworkCalculatorService implements IPACLearningCalculator {
      * @return
      */
     @Override
-    public Integer estimateVCDim(Integer features) {
-        return (features*neurons*layers)+2;
+    public Integer estimateVCDim() {
+//        return (features*neurons*layers)+2;
+        return 0;
     }
 
     /**
