@@ -9,6 +9,8 @@ public class LinearRegressionCalculatorService implements IPACLearningCalculator
 
     private Integer features;
 
+
+
     public LinearRegressionCalculatorService(Integer features) {
         this.features=features;
     }
@@ -21,7 +23,8 @@ public class LinearRegressionCalculatorService implements IPACLearningCalculator
      */
     @Override
     public Integer calculateMinimalSample(Integer accuracy, Integer reliability) {
-        return null;
+
+         return (int) (1/accuracy*(estimateVCDim()+Math.log(1/reliability)));
     }
 
 

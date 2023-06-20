@@ -5,6 +5,12 @@ public class SpecsModel {
     private Integer VCDim;
     private Integer minimalSample;
 
+    public SpecsModel() { }
+    public SpecsModel(MachineLearningModelEnum model, Integer VCDim, Integer minimalSample) {
+        this.model = model;
+        this.VCDim = VCDim;
+        this.minimalSample = minimalSample;
+    }
     // getters and setters
     public MachineLearningModelEnum getModel() {
         return model;
