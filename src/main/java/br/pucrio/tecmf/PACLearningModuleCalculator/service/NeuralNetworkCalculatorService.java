@@ -20,7 +20,7 @@ public class NeuralNetworkCalculatorService implements IPACLearningCalculator {
 
     @Override
     public Integer calculateMinimalSample(Integer accuracy, Integer reliability) {
-        return null;
+        return (int) (1/accuracy*(estimateVCDim()+Math.log(1/reliability)));
     }
 
     @Override

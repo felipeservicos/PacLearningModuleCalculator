@@ -88,4 +88,12 @@ public class CalculatorModelBuilder {
     public Integer getLayers() {
         return layers;
     }
+
+    public Integer getAccuracy() {
+        return accuracy;
+    }
+
+    public Integer getReliability() {
+        return reliability;
+    }
 }
