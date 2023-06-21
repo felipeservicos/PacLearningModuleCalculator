@@ -1,6 +1,8 @@
 package br.pucrio.tecmf.PACLearningModuleCalculator.model;
 
+
 public class CalculatorModelBuilder {
+
 
 
 
@@ -57,7 +59,7 @@ public class CalculatorModelBuilder {
     }
 
     public Integer getVCDimForLinearRegression() {
-        return this.features + 1;
+        return features + 1;
     }
 
 
