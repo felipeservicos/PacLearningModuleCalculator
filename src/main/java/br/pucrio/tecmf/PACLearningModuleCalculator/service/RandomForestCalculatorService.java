@@ -3,7 +3,7 @@ package br.pucrio.tecmf.PACLearningModuleCalculator.service;
 import br.pucrio.tecmf.PACLearningModuleCalculator.model.CalculatorModelBuilder;
 import org.springframework.stereotype.Service;
 
-@Service
+
 public class RandomForestCalculatorService implements IPACLearningCalculator {
 
 private Integer features;

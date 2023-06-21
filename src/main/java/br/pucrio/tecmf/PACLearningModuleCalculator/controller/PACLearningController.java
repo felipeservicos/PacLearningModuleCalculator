@@ -7,8 +7,7 @@ import br.pucrio.tecmf.PACLearningModuleCalculator.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +17,11 @@ import java.util.Optional;
 public class PACLearningController {
 
 
-    @GetMapping("runSimulations")
-    ResponseEntity< List<SpecsModel>> calculate(Optional<Integer> features, Optional<Integer> neurons, Optional<Integer> layers,
-                                     Optional<Integer> accuracy, Optional<Integer> reliability, Optional<Integer> range) {
+    @CrossOrigin
+    @PostMapping("/runSimulations")
+    ResponseEntity< List<SpecsModel>> calculate(@RequestParam Optional<Integer> features, @RequestParam Optional<Integer> neurons,
+                                                @RequestParam Optional<Integer> layers,@RequestParam Optional<Integer> accuracy,
+                                                @RequestParam Optional<Integer> reliability,@RequestParam Optional<Integer> range) {
 
         CalculatorModelBuilder calculatorModelBuilder = new CalculatorModelBuilder()
                 .features(features.orElse(0))
