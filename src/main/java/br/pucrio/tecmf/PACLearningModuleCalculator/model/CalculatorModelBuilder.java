@@ -59,7 +59,7 @@ public class CalculatorModelBuilder {
     }
 
     public Integer getVCDimForLinearRegression() {
-        return features + 1;
+        return this.features + 1;
     }
 
 
