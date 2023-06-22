@@ -19,9 +19,9 @@ public class PACLearningController {
 
     @CrossOrigin
     @PostMapping("/runSimulations")
-    ResponseEntity< List<SpecsModel>> calculate(@RequestParam Optional<Integer> features, @RequestParam Optional<Integer> neurons,
-                                                @RequestParam Optional<Integer> layers,@RequestParam Optional<Integer> accuracy,
-                                                @RequestParam Optional<Integer> reliability,@RequestParam Optional<Integer> range) {
+    ResponseEntity< List<SpecsModel>> calculate(Optional<Integer> features, Optional<Integer> neurons,
+                                                 Optional<Integer> layers, Optional<Integer> accuracy,
+                                                 Optional<Integer> reliability, Optional<Integer> range) {
 
         CalculatorModelBuilder calculatorModelBuilder = new CalculatorModelBuilder()
                 .features(features.orElse(0))
@@ -39,6 +39,11 @@ public class PACLearningController {
 
        //Linear Regression
         IPACLearningCalculator calculatorLinearRegression = new LinearRegressionCalculatorService(calculatorModelBuilder.getFeatures());
+
+        Integer vcs=calculatorLinearRegression.estimateVCDim();
+
+        Integer numero=calculatorLinearRegression.calculateMinimalSample(calculatorModelBuilder.getAccuracy(), calculatorModelBuilder.getReliability());
+
 
        SpecsModel linearRegressionModel= new SpecsModel(MachineLearningModelEnum.LINEAR_REGRESSION, calculatorLinearRegression.estimateVCDim(),
                calculatorLinearRegression.calculateMinimalSample(calculatorModelBuilder.getAccuracy(), calculatorModelBuilder.getReliability()));
@@ -71,5 +76,10 @@ public class PACLearningController {
 
 
         return new ResponseEntity< List<SpecsModel>>(specsModelsList, HttpStatus.OK);
+    }
+
+    @GetMapping("/hello")
+    public String getHello(Integer valor) {
+        return valor.toString();
     }
 }
