@@ -27,8 +27,8 @@ public RandomForestCalculatorService(Integer features) {
     public Integer estimateVCDim() {
 
         CalculatorModelBuilder calculator = new CalculatorModelBuilder()
-                .features(this.features)
-                .build();
+                .features(this.features);
+
 
         return calculator.getVCDimForRandomForest();
     }

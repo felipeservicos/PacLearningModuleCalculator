@@ -47,9 +47,6 @@ public class CalculatorModelBuilder {
         return this;
     }
 
-    public CalculatorModelBuilder build() {
-        return new CalculatorModelBuilder();
-    }
 
 
     public CalculatorModelBuilder range(Integer range) {
