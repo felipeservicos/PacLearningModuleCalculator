@@ -32,8 +32,9 @@ public class LinearRegressionCalculatorService implements IPACLearningCalculator
     public Integer estimateVCDim() {
 
         CalculatorModelBuilder calculator = new CalculatorModelBuilder()
-                .features(this.features)
-                .build();
+               .features(this.features);
+
+
 
         return calculator.getVCDimForLinearRegression();
 

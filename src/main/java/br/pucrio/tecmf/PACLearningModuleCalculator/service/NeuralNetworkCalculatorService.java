@@ -29,8 +29,8 @@ public class NeuralNetworkCalculatorService implements IPACLearningCalculator {
         CalculatorModelBuilder calculator = new CalculatorModelBuilder()
                 .features(this.features)
                 .neurons(this.neurons)
-                .layers(this.layers)
-                .build();
+                .layers(this.layers);
+
 
 
         return calculator.getVCDimForNeuralNetwork();
