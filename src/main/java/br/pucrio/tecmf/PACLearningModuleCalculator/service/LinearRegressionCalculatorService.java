@@ -22,7 +22,7 @@ public class LinearRegressionCalculatorService implements IPACLearningCalculator
      * @return
      */
     @Override
-    public Integer calculateMinimalSample(Integer accuracy, Integer reliability) {
+    public Integer calculateMinimalSample(Double accuracy, Double reliability) {
 
          return (int) (1/accuracy*(estimateVCDim()+Math.log(1/reliability)));
     }
@@ -49,7 +49,7 @@ public class LinearRegressionCalculatorService implements IPACLearningCalculator
      * @return
      */
     @Override
-    public Integer[][] lowerBoundsSamplesBetweenAccuracyAndReliability(Integer[] accuracy, Integer[] reliability, Integer VCDim, Integer range) {
+    public Integer[][] lowerBoundsSamplesBetweenAccuracyAndReliability(Double[] accuracy, Double[] reliability, Integer VCDim, Integer range) {
         return new Integer[0][];
     }
 
