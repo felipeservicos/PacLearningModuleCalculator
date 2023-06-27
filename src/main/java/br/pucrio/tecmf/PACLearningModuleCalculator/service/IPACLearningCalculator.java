@@ -7,9 +7,9 @@ public interface IPACLearningCalculator {
 
     //TODO add more methods for PAC Learning
 
-    public Integer calculateMinimalSample(Integer accuracy, Integer reliability);
+    public Integer calculateMinimalSample(Double accuracy, Double reliability);
     public Integer estimateVCDim();
-    public Integer[] [] lowerBoundsSamplesBetweenAccuracyAndReliability(Integer[] accuracy,Integer [] reliability,
+    public Integer[] [] lowerBoundsSamplesBetweenAccuracyAndReliability(Double[] accuracy,Double [] reliability,
                                                                         Integer VCDim, Integer range);
 
 }
