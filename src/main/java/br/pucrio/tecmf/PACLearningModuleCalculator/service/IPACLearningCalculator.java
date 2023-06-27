@@ -9,7 +9,5 @@ public interface IPACLearningCalculator {
 
     public Integer calculateMinimalSample(Double accuracy, Double reliability);
     public Integer estimateVCDim();
-    public Integer[] [] lowerBoundsSamplesBetweenAccuracyAndReliability(Double[] accuracy,Double [] reliability,
-                                                                        Integer VCDim, Integer range);
 
 }

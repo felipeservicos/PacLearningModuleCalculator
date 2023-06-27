@@ -42,10 +42,6 @@ public class PACLearningController {
         //Linear Regression
         IPACLearningCalculator calculatorLinearRegression = new LinearRegressionCalculatorService(calculatorModelBuilder.getFeatures());
 
-        Integer vcs = calculatorLinearRegression.estimateVCDim();
-
-        Integer numero = calculatorLinearRegression.calculateMinimalSample(calculatorModelBuilder.getAccuracy(), calculatorModelBuilder.getReliability());
-
 
         SpecsModel linearRegressionModel = new SpecsModel(MachineLearningModelEnum.LINEAR_REGRESSION, calculatorLinearRegression.estimateVCDim(),
                 calculatorLinearRegression.calculateMinimalSample(calculatorModelBuilder.getAccuracy(), calculatorModelBuilder.getReliability()));
