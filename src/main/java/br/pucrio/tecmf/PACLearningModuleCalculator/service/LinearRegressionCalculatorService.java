@@ -2,7 +2,6 @@ package br.pucrio.tecmf.PACLearningModuleCalculator.service;
 
 
 import br.pucrio.tecmf.PACLearningModuleCalculator.model.CalculatorModelBuilder;
-import org.springframework.stereotype.Service;
 
 
 public class LinearRegressionCalculatorService implements IPACLearningCalculator {
@@ -39,18 +38,6 @@ public class LinearRegressionCalculatorService implements IPACLearningCalculator
         return calculator.getVCDimForLinearRegression();
 
 
-    }
-
-    /**
-     * @param accuracy 
-     * @param reliability
-     * @param VCDim
-     * @param range
-     * @return
-     */
-    @Override
-    public Integer[][] lowerBoundsSamplesBetweenAccuracyAndReliability(Double[] accuracy, Double[] reliability, Integer VCDim, Integer range) {
-        return new Integer[0][];
     }
 
 
