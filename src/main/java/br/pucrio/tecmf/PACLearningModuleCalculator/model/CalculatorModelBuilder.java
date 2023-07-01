@@ -14,6 +14,7 @@ public class CalculatorModelBuilder {
     private Double reliability;
     private Integer range;
 
+    private Integer treeHeight;
 
 
     public CalculatorModelBuilder features(Integer features) {
@@ -47,6 +48,10 @@ public class CalculatorModelBuilder {
         return this;
     }
 
+    public CalculatorModelBuilder treeHeight(Integer treeHeight) {
+        this.treeHeight = treeHeight;
+        return this;
+    }
 
 
     public CalculatorModelBuilder range(Integer range) {
@@ -66,7 +71,7 @@ public class CalculatorModelBuilder {
 
 
     public Integer getVCDimForRandomForest() {
-        return (int) Math.pow(2, this.features);
+        return (int) Math.pow(2, this.features)*treeHeight;
     }
 
 
@@ -93,6 +98,10 @@ public class CalculatorModelBuilder {
         return accuracy;
     }
 
+    public Integer getTreeHeight() {
+        return treeHeight;
+    }
+
     public Double getReliability() {
         return reliability;
     }
@@ -107,4 +116,6 @@ public class CalculatorModelBuilder {
     public void reliabilityDecrement() {
         this.reliability = this.reliability - 0.01;
     }
+
+
 }

@@ -4,7 +4,6 @@ import br.pucrio.tecmf.PACLearningModuleCalculator.model.CalculatorModelBuilder;
 import br.pucrio.tecmf.PACLearningModuleCalculator.model.MachineLearningModelEnum;
 import br.pucrio.tecmf.PACLearningModuleCalculator.model.SpecsModel;
 import br.pucrio.tecmf.PACLearningModuleCalculator.service.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +21,7 @@ public class PACLearningController {
     @GetMapping("/runSimulations")
     ResponseEntity<List<SpecsModel>> calculate(Optional<Integer> features, Optional<Integer> neurons,
                                                Optional<Integer> layers, Optional<Double> accuracy,
-                                               Optional<Double> reliability, Optional<Integer> range) {
+                                               Optional<Double> reliability, Optional<Integer> range, Optional<Integer> treeHeight) {
 
         CalculatorModelBuilder calculatorModelBuilder = new CalculatorModelBuilder()
                 .features(features.orElse(0))
@@ -30,7 +29,8 @@ public class PACLearningController {
                 .layers(layers.orElse(0))
                 .accuracy(accuracy.orElse(0.0))
                 .reliability(reliability.orElse(0.0))
-                .range(range.orElse(0));
+                .range(range.orElse(0))
+                .treeHeight(treeHeight.orElse(0));
 
 
         //Out Object
@@ -57,7 +57,8 @@ public class PACLearningController {
         specsModelsList.add(neuralNetworkModel);
 
         //Random Forest
-        IPACLearningCalculator calculatorRandomForest = new RandomForestCalculatorService(calculatorModelBuilder.getFeatures());
+        IPACLearningCalculator calculatorRandomForest = new RandomForestCalculatorService(calculatorModelBuilder.getFeatures(),
+                calculatorModelBuilder.getTreeHeight());
         SpecsModel randomForestModel = new SpecsModel(MachineLearningModelEnum.RANDOM_FOREST, calculatorRandomForest.estimateVCDim(),
                 calculatorRandomForest.calculateMinimalSample(calculatorModelBuilder.getAccuracy(), calculatorModelBuilder.getReliability()));
         specsModelsList.add(randomForestModel);
@@ -75,7 +76,7 @@ public class PACLearningController {
     @CrossOrigin
     @GetMapping("/lowerBoundsSamplesBetweenAccuracyAndReliability")
     ResponseEntity<Integer[][]> calculate(Optional<Integer> features, Optional<Integer> neurons,
-                                          Optional<Integer> layers, Optional<Integer> range, Optional<MachineLearningModelEnum> model) {
+                                          Optional<Integer> layers, Optional<Integer> range, Optional<Integer> treeHeight, Optional<MachineLearningModelEnum> model) {
 
         if (!model.isPresent()) {
             return new ResponseEntity<Integer[][]>(HttpStatus.BAD_REQUEST);
@@ -85,7 +86,8 @@ public class PACLearningController {
                 .features(features.orElse(0))
                 .neurons(neurons.orElse(0))
                 .layers(layers.orElse(0))
-                .range(range.orElse(0));
+                .range(range.orElse(0))
+                .treeHeight(treeHeight.orElse(0));
 
         switch (model.get()) {
             case LINEAR_REGRESSION -> {
@@ -106,7 +108,7 @@ public class PACLearningController {
                 return new ResponseEntity<Integer[][]>(samplesMatrix, HttpStatus.OK);
             }
             case RANDOM_FOREST -> {
-                IPACLearningCalculator calculator = new RandomForestCalculatorService(calculatorModelBuilder.getFeatures());
+                IPACLearningCalculator calculator = new RandomForestCalculatorService(calculatorModelBuilder.getFeatures(), calculatorModelBuilder.getTreeHeight());
                 Integer[][] samplesMatrix = getMatrix(calculatorModelBuilder, calculator);
 
                 //return matrix with minimals samples for specified range.
