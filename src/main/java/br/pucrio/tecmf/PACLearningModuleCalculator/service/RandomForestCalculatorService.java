@@ -5,10 +5,12 @@ import br.pucrio.tecmf.PACLearningModuleCalculator.model.CalculatorModelBuilder;
 
 public class RandomForestCalculatorService implements IPACLearningCalculator {
 
-private Integer features;
+    private final Integer treeHeight;
+    private Integer features;
 
-public RandomForestCalculatorService(Integer features) {
+public RandomForestCalculatorService(Integer features, Integer treeHeight) {
     this.features=features;
+    this.treeHeight=treeHeight;
 }
     /**
      * @param accuracy
@@ -26,7 +28,8 @@ public RandomForestCalculatorService(Integer features) {
     public Integer estimateVCDim() {
 
         CalculatorModelBuilder calculator = new CalculatorModelBuilder()
-                .features(this.features);
+                .features(this.features)
+                .treeHeight(this.treeHeight);
 
 
         return calculator.getVCDimForRandomForest();
