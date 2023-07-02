@@ -9,6 +9,8 @@ In order to help mitigate these problems, the PAC Learning Module Calculator has
 
 Please feel free to suggest improvements!
 
+![image](https://github.com/felipeservicos/PacLearningModuleCalculator/assets/42394525/3093441b-bf32-4bf6-84c7-01cf8a719fd7)
+
 
 ## Table of Contents
 
