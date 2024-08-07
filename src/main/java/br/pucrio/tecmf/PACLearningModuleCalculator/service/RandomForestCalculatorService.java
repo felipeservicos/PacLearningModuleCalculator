@@ -20,7 +20,7 @@ public RandomForestCalculatorService(Integer features, Integer treeHeight) {
     @Override
     public Integer calculateMinimalSample(Double accuracy, Double reliability) {
 
-        return (int) (1/accuracy*(estimateVCDim()+Math.log(1/reliability)));
+         return (int) (1/(1-accuracy)*(estimateVCDim()+Math.log(1/(1-reliability))));
     }
 
 
